@@ -1,0 +1,25 @@
+.main{
+  width: 100vw;
+  height: 100vh;
+}
+
+.head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: rgb(35, 18, 146);
+  margin: 1.5rem;
+}
+
+.sub{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card{
+ margin-left: 6rem;
+};
+
+
