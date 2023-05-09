@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function Question({ qna, handleSubmit }) {
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState('');
 
   return (
-    <div className="border mt-5" style={{ width: "70%", margin: "auto" }}>
+    <div className="border mt-5" style={{ width: '70%', margin: 'auto' }}>
       <h4 className="text-primary">
         <span className="text-success">Question:</span> {qna.question}
       </h4>
       {qna.image && <img src={qna.image} width={300} height={200} />}
 
-      <h4>1. {qna.option1}</h4>
-      <h4>2. {qna.option2}</h4>
-      <h4>3. {qna.option3}</h4>
-      <h4>4. {qna.option4}</h4>
+      <h4>1. {qna.op1}</h4>
+      <h4>2. {qna.op2}</h4>
+      <h4>3. {qna.op3}</h4>
+      <h4>4. {qna.op4}</h4>
       <input
         className="form-control"
         type="number"
-        placeholder="Enter Answer"
+        placeholder="set Answer"
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
       />

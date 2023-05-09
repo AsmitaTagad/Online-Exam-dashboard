@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate} from 'react-router-dom';
-// import SignUp from '../../component/signUp/SignUp';
+
 
 export default function Home() {
   const nav = useNavigate();

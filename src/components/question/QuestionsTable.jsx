@@ -14,7 +14,7 @@ function QuestionsTable({ handleUpdation }) {
 
   return (
     <div>
-      <h1>All Questions</h1>
+      <h1>Question List</h1>
       <table
         className="table table-hover table-striped table-bordered"
         style={{ width: '80%', margin: 'auto' }}
@@ -26,20 +26,20 @@ function QuestionsTable({ handleUpdation }) {
             <th>Option 2</th>
             <th>Option 3</th>
             <th>Option 4</th>
-            <th>Right Answer</th>
+            <th>Answer</th>
             <th>Image</th>
-            <th>Actions</th>
+            <th>Operation</th>
           </tr>
         </thead>
         <tbody>
           {questionsFromLocal.map((qna) => (
-            <tr key={qna.id}>
+            <tr key={qna.id} style={{ marginLeft: '7rem' }}>
               <td>{qna.question}</td>
-              <td>{qna.option1}</td>
-              <td>{qna.option2}</td>
-              <td>{qna.option3}</td>
-              <td>{qna.option4}</td>
-              <td>{qna.rightAns}</td>
+              <td>{qna.op1}</td>
+              <td>{qna.op2}</td>
+              <td>{qna.op3}</td>
+              <td>{qna.op4}</td>
+              <td>{qna.correctAns}</td>
               <td>
                 <img src={qna.image} width={100} height={100} />
               </td>
@@ -50,11 +50,11 @@ function QuestionsTable({ handleUpdation }) {
                     handleUpdation(
                       qna.id,
                       qna.question,
-                      qna.option1,
-                      qna.option2,
-                      qna.option3,
-                      qna.option4,
-                      qna.rightAns,
+                      qna.op1,
+                      qna.op2,
+                      qna.op3,
+                      qna.op4,
+                      qna.correctAns,
                       qna.image
                     )
                   }

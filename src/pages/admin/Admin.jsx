@@ -1,179 +1,177 @@
-import React, { useState } from "react";
-import QuestionsTable from "../../components/question/QuestionsTable";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import QuestionsTable from '../../components/question/QuestionsTable';
+import { Link } from 'react-router-dom';
 
 function AdminPage() {
-  const [question, setQuestion] = useState("");
-  const [option1, setOption1] = useState("");
-  const [option2, setOption2] = useState("");
-  const [option3, setOption3] = useState("");
-  const [option4, setOption4] = useState("");
-  const [rightAns, setRightAns] = useState("");
+  const [question, setQuestion] = useState('');
+  const [op1, setOp1] = useState('');
+  const [op2, setOp2] = useState('');
+  const [op3, setOp3] = useState('');
+  const [op4, setOp4] = useState('');
+  const [correctAns, setCorrectAns] = useState('');
   const [isUpdation, setIsUpdation] = useState(false);
-  const [image, setImage] = useState("");
-  const [updationId, setUpdationId] = useState("");
-  const questionsFromLocal =
-    JSON.parse(localStorage.getItem("questions")) || [];
+  const [image, setImage] = useState('');
+  const [updationId, setUpdationId] = useState('');
+
+  const questionsFromLocal = JSON.parse(localStorage.getItem('questions')) || [];
 
   const handleQuesionsubmission = () => {
     if (
-      question != "" &&
-      option1 != "" &&
-      option2 != "" &&
-      option3 != "" &&
-      option4 != "" &&
-      rightAns != "" &&
-      image != ""
+      question != '' &&
+      op1 != '' &&
+      op2 != '' &&
+      op3 != '' &&
+      op4 != '' &&
+      correctAns != '' &&
+      image != ''
     ) {
       if (isUpdation == false) {
         const qna = {
           id: new Date(),
           question: question,
-          option1: option1,
-          option2: option2,
-          option3: option3,
-          option4: option4,
-          rightAns: rightAns,
+          op1: op1,
+          op2: op2,
+          op3: op3,
+          op4: op4,
+          correctAns: correctAns,
           image: image,
         };
         localStorage.setItem(
-          "questions",
+          'questions',
           JSON.stringify([...questionsFromLocal, qna])
         );
-        alert("Submitted The Question");
-        setQuestion("");
-        setOption1("");
-        setOption2("");
-        setOption3("");
-        setOption4("");
-        setRightAns("");
-        setImage("");
+        setQuestion('');
+        setOp1('');
+        setOp2('');
+        setOp3('');
+        setOp4('');
+        setCorrectAns('');
+        setImage('');
       } else {
         const qna = questionsFromLocal.map((item) => {
           if (item.id == updationId) {
             return {
               id: item.id,
               question: question,
-              option1: option1,
-              option2: option2,
-              option3: option3,
-              option4: option4,
-              rightAns: rightAns,
+              op1: op1,
+              op2: op2,
+              op3: op3,
+              op4: op4,
+              correctAns: correctAns,
               image: image,
             };
           }
           return item;
         });
 
-        localStorage.setItem("questions", JSON.stringify([...qna]));
+        localStorage.setItem('questions', JSON.stringify([...qna]));
         setIsUpdation(false);
-        alert("Updated The Question");
       }
     } else {
-      alert("Please Fill the Empty field.");
+      alert('Fill the Empty field');
     }
   };
 
-  const handleUpdation = (id, qna, op1, op2, op3, op4, rightAns1, image1) => {
+  const handleUpdation = (id, qna, op1, op2, op3, op4, correctAns, image) => {
     setUpdationId(id);
     setQuestion(qna);
-    setOption1(op1);
-    setOption2(op2);
-    setOption3(op3);
-    setOption4(op4);
-    setRightAns(rightAns1);
-    setImage(image1);
+    setOp1(op1);
+    setOp2(op2);
+    setOp3(op3);
+    setOp4(op4);
+    setCorrectAns(correctAns);
+    setImage(image);
     setIsUpdation(true);
   };
 
   return (
     <div>
-      <Link to="/StudentPage">Go to student page</Link>
       <div
         className="border"
         style={{
-          width: "80%",
-          padding: "50px",
-          margin: "auto",
-          marginTop: "100px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          width: '80%',
+          padding: '50px',
+          margin: 'auto',
+          marginTop: '100px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <h1 className="text-primary">ADMIN PAGE</h1>
 
         <input
           className="form-control"
-          style={{ width: "40%",height:"2rem" }}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Question"
         />
-        <br/>
+        <br />
         <input
           className="form-control m-2"
-          style={{ width: "40%",height:"2rem" }}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
-          value={option1}
-          onChange={(e) => setOption1(e.target.value)}
-          placeholder="Option 1"
+          value={op1}
+          onChange={(e) => setOp1(e.target.value)}
+          placeholder="Op1"
         />
-         <br/>
+        <br />
         <input
           className="form-control m-2"
-          style={{ width: "40%",height:"2rem" }}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
-          value={option2}
-          onChange={(e) => setOption2(e.target.value)}
-          placeholder="Option 2"
+          value={op2}
+          onChange={(e) => setOp2(e.target.value)}
+          placeholder="Op2"
         />
-         <br/>
+        <br />
         <input
           className="form-control m-2"
-          style={{ width: "40%",height:"2rem" }}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
-          value={option3}
-          onChange={(e) => setOption3(e.target.value)}
-          placeholder="Option 3"
+          value={op3}
+          onChange={(e) => setOp3(e.target.value)}
+          placeholder="Op3"
         />
-         <br/>
+        <br />
         <input
           className="form-control m-2"
-          style={{ width: "40%",height:"2rem" }}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
-          value={option4}
-          onChange={(e) => setOption4(e.target.value)}
-          placeholder="Option 4"
+          value={op4}
+          onChange={(e) => setOp4(e.target.value)}
+          placeholder="Op4"
         />
-         <br/>
+        <br />
         <input
           className="form-control m-2"
-          style={{ width: "40%",height:"2rem" }}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
-          value={rightAns}
-          onChange={(e) => setRightAns(e.target.value)}
-          placeholder="Right Answer"
+          value={correctAns}
+          onChange={(e) => setCorrectAns(e.target.value)}
+          placeholder="correct Answer"
         />
-         <br/>
+        <br />
         <input
           className="form-control m-2"
-          style={{ width: "40%",height:"2rem"}}
+          style={{ width: '40%', height: '2rem' }}
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          placeholder="Enter the URL images"
+          placeholder="Url of image"
         />
- <br/>
+        <br />
         <button className="btn btn-primary" onClick={handleQuesionsubmission}>
-          {isUpdation ? "Update" : "Submit"}
+          {isUpdation ? 'Update' : 'Submit'}
         </button>
       </div>
       <div>
         <QuestionsTable handleUpdation={handleUpdation} />
       </div>
+      <Link to="/">Back to Home</Link>
     </div>
   );
 }
